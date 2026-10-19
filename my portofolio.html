@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roy Peter | Software Developer & Robotics Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #090d16;
+            --card-bg: #101726;
+            --card-hover: #162032;
+            --accent-color: #34d399;
+            --accent-hover: #10b981;
+            --accent-glow: rgba(52, 211, 153, 0.12);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #1e293b;
+            --input-bg: #131c2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-brand span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header Section */
+        header {
+            background: radial-gradient(circle at 50% 0%, #132238 0%, var(--bg-color) 70%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 9rem 1rem 5rem;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            color: var(--text-primary);
+            font-size: 3.25rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+        }
+
+        .header-sub {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        .location-tag {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--card-bg);
+            padding: 0.4rem 1.1rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 850px;
+            margin: 3rem auto;
+            padding: 0 1.25rem;
+        }
+
+        /* Cards - Small Corner Radius */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(52, 211, 153, 0.3);
+            background-color: var(--card-hover);
+        }
+
+        .card h2 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card h2 i, .card h2 .material-icons-outlined {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+
+        .highlight-box {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--accent-color);
+            padding: 1.25rem;
+            border-radius: 6px;
+        }
+
+        .highlight-box h4 {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-box p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-item {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .skill-item h3 {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .skill-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .project-card {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.75rem;
+            border-radius: 6px;
+            transition: border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: rgba(52, 211, 153, 0.4);
+        }
+
+        .project-card h3 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-info-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .info-item {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-item i, .info-item .material-icons-outlined {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .info-item a, .info-item span {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            word-break: break-all;
+            transition: color 0.2s ease;
+        }
+
+        .info-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 640px) {
+            header h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-brand"><span class="material-icons-outlined" style="color: var(--accent-color);">terminal</span> Roy<span>.dev</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Stack</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header-->
+    <header>
+        <div class="header-content">
+            <h1>Roy Peter B.</h1>
+            <p class="header-sub">Software Developer & Robotics Engineer</p>
+            <div class="location-tag">
+                <span class="material-icons-outlined" style="color: var(--accent-color); font-size: 1rem;">location_on</span>
+                <span>Kampala, Uganda</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- About Section -->
+        <section id="about" class="card">
+            <h2><span class="material-icons-outlined">account_circle</span> About Me</h2>
+            <p class="about-text">
+                Hi there! I'm a passionate young developer based in <strong>Uganda</strong>, I enjoy turning logical challenges into clean, efficient software solutions.
+            </p>
+            <p class="about-text">
+                Whether I'm scripting robust backend logic in <strong>Python</strong> or styling user interfaces with modern <strong>HTML & CSS</strong>, my goal is always to write clean, maintainable code that delivers a smooth user experience.
+            </p>
+
+            <div class="about-highlights">
+                <div class="highlight-box">
+                    <h4>Core Focus</h4>
+                    <p>Python Automation, Backend Logic & Modern Web Layouts</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>Education</h4>
+                    <p>Computer Studies & Mathematics | Robotics Engineering</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>My Mindset</h4>
+                    <p>Always curious, detail-oriented, and eager to learn new technologies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Stack -->
+        <section id="skills" class="card">
+            <h2><span class="material-icons-outlined">layers</span> Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3><i class="fab fa-python" style="color: var(--accent-color);"></i> Python</h3>
+                    <p>Writing automation scripts, building command-line utilities, and managing clean algorithmic workflows.</p>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fab fa-html5" style="color: var(--accent-color);"></i> HTML5 & CSS3</h3>
+                    <p>Designing semantic, fully responsive, and visually appealing web pages from scratch.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="card">
+            <h2><span class="material-icons-outlined">code</span> Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>School Management Helper</h3>
+                    <p>A custom Python command-line utility designed to help organize student data records, schedules, and daily tasks more efficiently.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Developer Portfolio Website</h3>
+                    <p>A clean, mobile-responsive dark-themed portfolio website built to showcase my background, technical skill set, and ongoing projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="card">
+            <h2><span class="material-icons-outlined">send</span> Let's Connect</h2>
+            
+            <div class="contact-info-bar">
+                <div class="info-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/roypeterb" target="_blank" rel="noopener">GitHub Profile</a>
+                </div>
+                <div class="info-item">
+                    <span class="material-icons-outlined">mail</span>
+                    <a href="mailto:roybampeter59@gmail.com">Send an Email</a>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-instagram"></i>
+                    <a href="https://instagram.com/roypeterb" target="_blank" rel="noopener">@roypeterb</a>
+                </div>
+                <div class="info-item">
+                    <span class="material-icons-outlined">public</span>
+                    <span>Kampala, Uganda</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/roybampeter59-netizen" target="_blank" rel="noopener" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com/roypeterb" target="_blank" rel="noopener" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:roybampeter59@gmail.com" class="social-link" title="Email"><span class="material-icons-outlined" style="font-size: 1.1rem;">mail</span></a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Roy Peter</p>
+    </footer>
+
+</body>
+</html>
